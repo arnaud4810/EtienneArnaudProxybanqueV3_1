@@ -7,6 +7,7 @@ import javax.persistence.Persistence;
 
 import model.Adresse;
 import model.CompteCourant;
+import model.CompteEpargne;
 import model.Conseiller;
 import model.Customer;
 
@@ -67,6 +68,14 @@ public class MainTest {
 			CompteCourant cc5 = new CompteCourant();
 			CompteCourant cc6 = new CompteCourant();
 			
+			CompteEpargne ce1 = new CompteEpargne();
+			CompteEpargne ce2 = new CompteEpargne();
+			CompteEpargne ce3 = new CompteEpargne();
+			CompteEpargne ce4 = new CompteEpargne();
+			CompteEpargne ce5 = new CompteEpargne();
+			CompteEpargne ce6 = new CompteEpargne();
+			
+			
 			cc1.setClient(customer1);
 			cc11.setClient(customer1);
 			cc2.setClient(customer2);
@@ -75,17 +84,31 @@ public class MainTest {
 			cc5.setClient(customer5);
 			cc6.setClient(customer6);
 			
-						
-			em.persist(conseiller1);
-			em.persist(conseiller2);
-			em.persist(customer1);
-			em.persist(customer2);
-			em.persist(customer3);
-			em.persist(customer4);
-			em.persist(customer5);
-			em.persist(customer6);
+			ce1.setClient(customer1);
+			ce2.setClient(customer2);
+			ce3.setClient(customer3);
+			ce4.setClient(customer4);
+			ce5.setClient(customer5);
+			ce6.setClient(customer6);
 			
-
+						
+//			em.persist(conseiller1);
+//			em.persist(conseiller2);
+//			em.persist(customer1);
+//			em.persist(customer2);
+//			em.persist(customer3);
+//			em.persist(customer4);
+//			em.persist(customer5);
+//			em.persist(customer6);
+			em.persist(cc1);
+			em.persist(cc11);
+			em.persist(ce1);
+			em.persist(ce2);
+			em.persist(ce3);
+			em.persist(ce4);
+			em.persist(ce5);
+			em.persist(ce6);
+			
 			txn.commit();
 
 		} catch (Exception e) {

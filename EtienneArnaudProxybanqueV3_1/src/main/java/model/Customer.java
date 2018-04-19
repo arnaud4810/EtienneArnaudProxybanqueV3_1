@@ -26,13 +26,13 @@ public class Customer {
 	@OneToOne(cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
 	@JoinColumn(name = "idAdresse", unique = true)
 	private Adresse adresse;
+	
 	/**
 	 * @param CascasdeType.PERSIST et CascadeType.REMOVE permettent de persister et supprimer l'adresse en meme temps que le customer
 	 *
 	 * @param Adresse
 	 *            La table client possède la clef étrangère pour la table adresse
 	 */
-
 
 	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
 	@JoinColumn(name = "idConseiller")
