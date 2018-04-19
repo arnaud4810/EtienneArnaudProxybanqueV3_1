@@ -6,6 +6,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
 import model.Adresse;
+import model.CompteCourant;
 import model.Conseiller;
 import model.Customer;
 
@@ -58,8 +59,23 @@ public class MainTest {
 			customer5.setAdresse(adresse5);
 			customer6.setAdresse(adresse6);
 			
+			CompteCourant cc1 = new CompteCourant();
+			CompteCourant cc11 = new CompteCourant();
+			CompteCourant cc2 = new CompteCourant();
+			CompteCourant cc3 = new CompteCourant();
+			CompteCourant cc4 = new CompteCourant();
+			CompteCourant cc5 = new CompteCourant();
+			CompteCourant cc6 = new CompteCourant();
 			
-
+			cc1.setClient(customer1);
+			cc11.setClient(customer1);
+			cc2.setClient(customer2);
+			cc3.setClient(customer3);
+			cc4.setClient(customer4);
+			cc5.setClient(customer5);
+			cc6.setClient(customer6);
+			
+						
 			em.persist(conseiller1);
 			em.persist(conseiller2);
 			em.persist(customer1);

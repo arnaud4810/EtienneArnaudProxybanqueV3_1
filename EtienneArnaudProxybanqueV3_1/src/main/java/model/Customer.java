@@ -1,5 +1,8 @@
 package model;
 
+import java.util.Set;
+import java.util.HashSet;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -33,6 +37,11 @@ public class Customer {
 	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
 	@JoinColumn(name = "idConseiller")
 	private Conseiller conseiller;
+	
+	@OneToMany(mappedBy="customer", cascade = { CascadeType.PERSIST, CascadeType.REMOVE})
+	private Set<Comptes> customerAssociatedComptes = new HashSet<>();
+	
+	
 
 	/**
 	 * @param idClient
@@ -103,5 +112,15 @@ public class Customer {
 	public void setConseiller(Conseiller conseiller) {
 		this.conseiller = conseiller;
 	}
+
+	public Set<Comptes> getCustomerAssociatedComptes() {
+		return customerAssociatedComptes;
+	}
+
+	public void setCustomerAssociatedComptes(Set<Comptes> customerAssociatedComptes) {
+		this.customerAssociatedComptes = customerAssociatedComptes;
+	}
+	
+	
 
 }
