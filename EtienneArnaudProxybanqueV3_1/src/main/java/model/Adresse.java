@@ -9,13 +9,13 @@ import javax.persistence.OneToOne;
 @Entity
 public class Adresse {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int idAdresse;
 	/**
 	 * @param idAdresse
 	 * Solution pour avoir une clef primaire générée automatiquement.
 	 */
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int idAdresse;
 	
 	private int numero;
 	private String typeVoie;
@@ -27,6 +27,7 @@ public class Adresse {
 	 * @param Customer
 	 * Customer est propriétaire de l'adresse.
 	 */
+	
 	@OneToOne(mappedBy = "adresse")
 	private Customer customer;
 

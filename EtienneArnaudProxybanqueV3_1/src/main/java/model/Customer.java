@@ -14,27 +14,25 @@ public class Customer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int idClient;
-	
+
 	private String nom;
 	private String prenom;
-	
-	@OneToOne(cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
-	// Permet de persister et supprimer l'adresse en meme temps que le customer
-	
-	
-	/**
-	 * @param Adresse
-	 * La table client possède la clef étrangère pour la table adresse
-	 */
-	@JoinColumn(name = "idClient", unique = true)
-	private Adresse adresse;
-	
 	private String telephone;
-	
+
+	@OneToOne(cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
+	@JoinColumn(name = "idAdresse", unique = true)
+	private Adresse adresse;
+	/**
+	 * @param CascasdeType.PERSIST et CascadeType.REMOVE permettent de persister et supprimer l'adresse en meme temps que le customer
+	 *
+	 * @param Adresse
+	 *            La table client possède la clef étrangère pour la table adresse
+	 */
+
+
 	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
 	@JoinColumn(name = "idConseiller")
 	private Conseiller conseiller;
-	
 
 	/**
 	 * @param idClient
@@ -53,13 +51,10 @@ public class Customer {
 		this.telephone = telephone;
 		this.conseiller = conseiller;
 	}
-	
-	
+
 	public Customer() {
-		
+
 	}
-
-
 
 	public int getIdClient() {
 		return idClient;
@@ -101,17 +96,12 @@ public class Customer {
 		this.telephone = telephone;
 	}
 
-
 	public Conseiller getConseiller() {
 		return conseiller;
 	}
-
 
 	public void setConseiller(Conseiller conseiller) {
 		this.conseiller = conseiller;
 	}
 
-	
-	
-	
 }
