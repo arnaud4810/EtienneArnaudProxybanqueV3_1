@@ -6,10 +6,10 @@ function doGet() {
 						contentType : "application/json; charset=utf-8",
 						dataType : "json",
 						url : "http://localhost:8080/EtienneArnaudProxybanqueV3_1/services/customerService/Customer/"
-								+ $('#idClient').val()
+								+ $('#newIdClient').val()
 					}).then(function(data) {
-				$('#idClient').val(data.id);
-				$('#nom').val(data.name);
+				$('#newIdClient').val(data.idClient);
+				$('#newNom').val(data.nom);
 			});
 }
 
@@ -19,13 +19,13 @@ function doPost() {
 		contentType : "application/json; charset=utf-8",
 		dataType : "json",
 		data : JSON.stringify({
-			name : $('#patientName').val()
+			name : $('#newNom').val()
 		}),
 		url : "http://localhost:8080/EtienneArnaudProxybanqueV3_1/services/customerService/Customer/"
 
 	}).then(function(data) {
-		$('#idClient').val(data.id);
-		$('#nom').val(data.name);
+		$('#newIdClient').val(data.idClient);
+		$('#newNom').val(data.nom);
 	});
 
 }
@@ -36,7 +36,7 @@ function doDelete() {
 		contentType : "application/json; charset=utf-8",
 		dataType : "json",
 		url : "http://localhost:8080/EtienneArnaudProxybanqueV3_1/services/customerService/Customer/"
-				+ $('#idClient').val(),
+				+ $('#newIdClient').val(),
 		success : function(result) {
 			if (result)
 				alert('Votre client a été supprimé');
@@ -50,12 +50,12 @@ function doPut() {
 		contentType : "application/json; charset=utf-8",
 		dataType : "json",
 		data : JSON.stringify({
-			id : $('#idClient').val(),
-			name : $('#nom').val()
+			id : $('#newIdClient').val(),
+			name : $('#newNom').val()
 		}),
 		url : "http://localhost:8080/EtienneArnaudProxybanqueV3_1/services/customerService/Customer/"
 	}).then(function(data) {
-		$('#idClient').val(data.id);
-		$('#nom').val(data.name);
+		$('#newIdClient').val(data.idClient);
+		$('#newNom').val(data.nom);
 	});
 }

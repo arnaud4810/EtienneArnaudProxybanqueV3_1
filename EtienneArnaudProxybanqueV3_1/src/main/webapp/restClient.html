@@ -1,6 +1,8 @@
+
 <html>
     <head>
-        <title>Patient Data</title>
+    <meta charset = "UTF-8"/>
+        <title>Data Conseiller</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script src="restClient.js"></script>
     </head>
@@ -8,8 +10,8 @@
     <body>
     	<h3>Votre espace conseiller : </h3>
         <div>
-            Votre Client : <input  id="idClient"/><br/>
-             Le nom du client : <input id="nom"/><br/>
+            Votre Client : <input  id="newIdClient"/><br/>
+             Le nom du client : <input id="newNom"/><br/>
              <input type="button" value="read "onClick="doGet()"/>
             <input type="button" value ="add" onClick="doPost()"/>
              <input type="button" value="delete "onClick="doDelete()"/>

@@ -1,10 +1,5 @@
 package model;
 
-<<<<<<< HEAD
-public class Adresse {
-
-	
-=======
 
 public class Adresse {
 
@@ -59,9 +54,4 @@ public class Adresse {
 		
 	}
 	
-	
-	
-	
-	
->>>>>>> 4bf8de8b7d2c68ab748f38e6249440b8c6107974
 }

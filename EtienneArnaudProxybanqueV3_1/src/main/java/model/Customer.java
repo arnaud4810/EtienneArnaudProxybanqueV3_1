@@ -5,7 +5,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
+
+@XmlRootElement(name = "customer")
 @Entity
 public class Customer {
 	@Id
@@ -51,7 +55,7 @@ public class Customer {
 	public int getIdClient() {
 		return idClient;
 	}
-
+	@XmlElement (name = "idClient")
 	public void setIdClient(int idClient) {
 		this.idClient = idClient;
 	}
@@ -59,7 +63,7 @@ public class Customer {
 	public String getNom() {
 		return nom;
 	}
-
+	@XmlElement(name = "nom")
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
@@ -67,7 +71,7 @@ public class Customer {
 	public String getPrenom() {
 		return prenom;
 	}
-
+	@XmlElement(name = "prenom")
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
 	}
@@ -75,7 +79,7 @@ public class Customer {
 	public Adresse getAdresse() {
 		return adresse;
 	}
-
+	@XmlElement(name = "adresse")
 	public void setAdresse(Adresse adresse) {
 		this.adresse = adresse;
 	}
@@ -83,7 +87,7 @@ public class Customer {
 	public String getTelephone() {
 		return telephone;
 	}
-
+	@XmlElement(name = "telephone")
 	public void setTelephone(String telephone) {
 		this.telephone = telephone;
 	}
