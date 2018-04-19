@@ -2,7 +2,6 @@ package model;
 
 import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorColumn;
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -13,7 +12,7 @@ import javax.persistence.ManyToOne;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE )
-@DiscriminatorColumn(name="COMPTE_TYPE")
+@DiscriminatorColumn(name="COMPTE_TYPE" )
 public abstract class Comptes {
 
 	@Id
