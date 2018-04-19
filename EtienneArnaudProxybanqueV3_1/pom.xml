@@ -30,7 +30,7 @@
 				</configuration>
 			</plugin>
 		</plugins>
-		<finalName>ArnaudEtienneProxybanqueV3</finalName>
+		<finalName>EtienneArnaudProxybanqueV3_1</finalName>
 	</build>
 	<dependencies>
 		<dependency>

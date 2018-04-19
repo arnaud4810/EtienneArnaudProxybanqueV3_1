@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title>Patient Data</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="restClient.js"></script>
+    </head>
+
+    <body>
+    	<h3>Votre espace conseiller : </h3>
+        <div>
+            Votre Client : <input  id="idClient"/><br/>
+             Le nom du client : <input id="nom"/><br/>
+             <input type="button" value="read "onClick="doGet()"/>
+            <input type="button" value ="add" onClick="doPost()"/>
+             <input type="button" value="delete "onClick="doDelete()"/>
+          <input type="button" value="update" onClick="doPut()"/>
+        </div>
+    </body>
+</html>
