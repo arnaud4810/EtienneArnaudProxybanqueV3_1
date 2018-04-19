@@ -2,11 +2,16 @@ package services;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.ws.rs.core.Response;
 
+import model.Adresse;
+import model.Comptes;
+import model.Conseiller;
 import model.Customer;
 
 public class CustomerServiceImpl implements CustomerService {
@@ -18,10 +23,19 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 	
 	final void init() {
+		Adresse adresse = new Adresse();
 		Customer customer = new Customer();
-		customer.setNom("Renard");
+		Conseiller conseiller = new Conseiller();
+		Set<Comptes> customerAssociatedComptes = new HashSet<>();
 		customer.setIdClient(currentId);
+		customer.setNom("Renard");
+		customer.setPrenom("Arnaud");
+		customer.setTelephone("0146137378");
+		customer.setAdresse(adresse);
+		customer.setConseiller(conseiller);
+		customer.setCustomerAssociatedComptes(customerAssociatedComptes);
 		customers.put(customer.getIdClient(), customer);
+	
 	}
 	@Override
 	public Customer getCustomer(String idClient) {
@@ -74,9 +88,9 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 
 	@Override
-	public List<Customer> getAllCustomers() {
+	public Set<Customer> getAllCustomersByConseiller() {
 		// TODO Auto-generated method stub
-		ArrayList<Customer> listCustomers = new ArrayList(customers.values());
+		Set<Customer> listCustomers = new HashSet<>();
 		return listCustomers;
 	}
 

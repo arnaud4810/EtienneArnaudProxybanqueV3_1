@@ -1,6 +1,6 @@
 package services;
 
-import java.util.List;
+import java.util.Set;
 
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -35,5 +35,5 @@ public interface CustomerService {
 	
 	@GET
 	@Path("/Customer/")
-	List<Customer> getAllCustomers();	
+	Set<Customer> getAllCustomersByConseiller();	
 }
