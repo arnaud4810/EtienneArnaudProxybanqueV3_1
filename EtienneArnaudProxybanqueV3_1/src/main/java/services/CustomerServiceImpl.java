@@ -26,6 +26,7 @@ public class CustomerServiceImpl implements CustomerService {
 	@Override
 	public Customer getCustomer(String idClient) {
 		// TODO Auto-generated method stub
+		
 		int id = Integer.parseInt(idClient);
 		System.out.println("get customer " + id);
 		Customer customer = customers.get(id);
