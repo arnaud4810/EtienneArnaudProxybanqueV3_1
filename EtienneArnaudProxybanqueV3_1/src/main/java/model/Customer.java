@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Customer {
@@ -16,12 +17,23 @@ public class Customer {
 	
 	private String nom;
 	private String prenom;
-//	private Adresse adresse;
+	
+	@OneToOne(cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
+	// Permet de persister et supprimer l'adresse en meme temps que le customer
+	
+	
+	/**
+	 * @param Adresse
+	 * La table client possède la clef étrangère pour la table adresse
+	 */
+	@JoinColumn(name = "idClient", unique = true)
+	private Adresse adresse;
+	
 	private String telephone;
 	
-//	@ManyToOne(cascade = CascadeType.PERSIST)
-//	@JoinColumn(name = "idConseiller")
-//	private Conseiller conseiller;
+	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
+	@JoinColumn(name = "idConseiller")
+	private Conseiller conseiller;
 	
 
 	/**
@@ -32,15 +44,15 @@ public class Customer {
 	 * @param telephone
 	 */
 
-//	public Customer(int idClient, String nom, String prenom, Adresse adresse, String telephone, Conseiller conseiller) {
-//		super();
-//		this.idClient = idClient;
-//		this.nom = nom;
-//		this.prenom = prenom;
-//		this.adresse = adresse;
-//		this.telephone = telephone;
-//		this.conseiller = conseiller;
-//	}
+	public Customer(int idClient, String nom, String prenom, Adresse adresse, String telephone, Conseiller conseiller) {
+		super();
+		this.idClient = idClient;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.adresse = adresse;
+		this.telephone = telephone;
+		this.conseiller = conseiller;
+	}
 	
 	
 	public Customer() {
@@ -73,13 +85,13 @@ public class Customer {
 		this.prenom = prenom;
 	}
 
-//	public Adresse getAdresse() {
-//		return adresse;
-//	}
-//
-//	public void setAdresse(Adresse adresse) {
-//		this.adresse = adresse;
-//	}
+	public Adresse getAdresse() {
+		return adresse;
+	}
+
+	public void setAdresse(Adresse adresse) {
+		this.adresse = adresse;
+	}
 
 	public String getTelephone() {
 		return telephone;
@@ -90,14 +102,14 @@ public class Customer {
 	}
 
 
-//	public Conseiller getConseiller() {
-//		return conseiller;
-//	}
-//
-//
-//	public void setConseiller(Conseiller conseiller) {
-//		this.conseiller = conseiller;
-//	}
+	public Conseiller getConseiller() {
+		return conseiller;
+	}
+
+
+	public void setConseiller(Conseiller conseiller) {
+		this.conseiller = conseiller;
+	}
 
 	
 	
