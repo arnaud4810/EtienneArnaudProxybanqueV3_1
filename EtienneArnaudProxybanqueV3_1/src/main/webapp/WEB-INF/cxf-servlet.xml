@@ -5,7 +5,7 @@
 	xmlns:soap="http://cxf.apache.org/bindings/soap" xmlns:jaxrs="http://cxf.apache.org/jaxrs"
 	xsi:schemaLocation=" http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://cxf.apache.org/bindings/soap http://cxf.apache.org/schemas/configuration/soap.xsd http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd  http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/jaxrs.xsd">
 
-	<jaxrs:server id="patientService" address="/patientservice">
+	<jaxrs:server id="customerService" address="/customerService">
 		<jaxrs:serviceBeans>
 			<ref bean="serviceBean" />
 		</jaxrs:serviceBeans>
@@ -13,6 +13,6 @@
 			<ref bean="jacksonProvider" />
 		</jaxrs:providers>
 	</jaxrs:server>
-	<bean id="serviceBean" class="org.formation.ws.rest.jaxrs.PatientServiceImpl"></bean>
+	<bean id="serviceBean" class="services.CustomerServiceImpl"></bean>
 	<bean id="jacksonProvider" class="org.codehaus.jackson.jaxrs.JacksonJsonProvider" />
 </beans>
