@@ -25,8 +25,10 @@ public class MethodsImpl implements Methods {
 	 * 
 	 * @param Prend
 	 *            un client pour le persister dans la base de donénes.
-	 * @param Vérifie
-	 *            d'abord que le client n'existe pas déjà.
+	 * @param Devrait vérifier
+	 *            d'abord que le client n'existe pas déjà. (code en commentaire)
+	 * @result renvoie true si la persistance dans la BDD est ok
+	 * false si non.
 	 * 
 	 */
 	@Override
@@ -60,6 +62,14 @@ public class MethodsImpl implements Methods {
 		return false;
 	}
 
+	/**
+	 * @Author Arnaud et Etienne
+	 * 
+	 * @param Prend
+	 *            un client pour le mettre à jour dans la base de données.
+	 * @result renvoi true si la mise à jour est ok, et false si il n'y a pas eu de mise à jour
+	 * 
+	 */
 	@Override
 	public boolean updateClient(Customer client) {
 
@@ -83,6 +93,15 @@ public class MethodsImpl implements Methods {
 
 	}
 
+	/**
+	 * @Author Arnaud et Etienne
+	 * 
+	 * @param Récupère un Conseiller par son id.
+	 *        récupère la liste des clients de ce conseiller
+	 * @result renvoi la liste des clients de ce conseiller si ok,
+	 * @renvoi null en exception.
+	 * 
+	 */
 	@Override
 	public Set<Customer> getMyClients(Integer idConseiller) {
 
@@ -106,6 +125,15 @@ public class MethodsImpl implements Methods {
 		}
 	}
 
+	/**
+	 * @Author Arnaud et Etienne
+	 * 
+	 * @param Prend
+	 *            un client pour le supprimer de la base de donénes.
+	 * @param Devrait vérifier
+	 *            d'abord que le client existe. (code à générer)
+	 * 
+	 */
 	@Override
 	public boolean deleteClientById(Integer idClient) {
 
@@ -129,6 +157,16 @@ public class MethodsImpl implements Methods {
 		}
 	}
 
+	/**
+	 * @Author Arnaud et Etienne
+	 * 
+	 * @param Prend
+	 *            un client pour le persister dans la base de donénes.
+	 * @param Devrait vérifier
+	 *            d'abord que le client n'existe pas déjà. (code en commentaire)
+	 * 
+	 */
+	
 	@Override
 	public boolean createAndAssociateCompteToClient(Customer client) {
 		// TODO Auto-generated method stub
@@ -141,6 +179,16 @@ public class MethodsImpl implements Methods {
 		return null;
 	}
 
+	/**
+	 * @Author Arnaud et Etienne
+	 * 
+	 * @param récupère un client par son Id
+	 *            
+	 * @result renvoi le client récupéré si ok,
+	 * renvoi null en exeption.
+	 * 
+	 */
+	
 	@Override
 	public Customer getClientById(Integer idClient) {
 		try {
