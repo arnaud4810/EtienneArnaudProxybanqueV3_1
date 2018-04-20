@@ -79,7 +79,7 @@ public class CustomerServiceImpl implements CustomerService {
 	public Response addCustomer(Customer customer) {
 		// TODO Auto-generated method stub
 		Response response = null;
-		customer.setNom("titi");
+		customer.setNom("tutu");
 		dao.createClient(customer);
 		response = Response.ok(customer).build();
 		

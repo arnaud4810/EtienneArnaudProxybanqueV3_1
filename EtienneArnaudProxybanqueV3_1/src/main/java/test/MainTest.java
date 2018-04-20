@@ -1,15 +1,22 @@
 package test;
 
+import java.util.Set;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import javax.ws.rs.core.Response;
 
 import model.Adresse;
 import model.CompteCourant;
 import model.CompteEpargne;
 import model.Conseiller;
 import model.Customer;
+import persistence.Methods;
+import persistence.MethodsImpl;
+import services.CustomerService;
+import services.CustomerServiceImpl;
 
 public class MainTest {
 
@@ -24,7 +31,17 @@ public class MainTest {
 		em = emf.createEntityManager();
 		txn = em.getTransaction();
 
+		Methods dao = new MethodsImpl();
+		CustomerService customerService = new CustomerServiceImpl();
+
 		try {
+							
+			
+			Customer client = new Customer();
+					client.setPrenom("TOTO");
+		
+			customerService.addCustomer(client);
+			
 
 			txn.begin();
 

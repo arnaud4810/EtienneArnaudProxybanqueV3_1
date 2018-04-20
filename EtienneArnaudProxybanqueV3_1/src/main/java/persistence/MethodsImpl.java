@@ -7,8 +7,6 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
-import com.mysql.fabric.xmlrpc.Client;
-
 import model.Adresse;
 import model.Comptes;
 import model.Conseiller;
@@ -17,8 +15,6 @@ import model.Customer;
 public class MethodsImpl implements Methods {
 
 	private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("my-pu");
-	private static EntityManager em = emf.createEntityManager();
-	private static EntityTransaction txn = em.getTransaction();
 
 	/**
 	 * @Author Arnaud et Etienne
@@ -33,9 +29,11 @@ public class MethodsImpl implements Methods {
 	 */
 	@Override
 	public boolean createClient(Customer client) {
+		
+		EntityManager em = emf.createEntityManager();
+		EntityTransaction txn = em.getTransaction();
 
 		try {
-
 			// if ((Integer) client.getIdClient() == null) {
 			txn.begin();
 			em.persist(client);
@@ -46,19 +44,16 @@ public class MethodsImpl implements Methods {
 			// }
 
 			return true;
-
-		}
-
-		catch (Exception e) {
+		} catch (Exception e) {
 			if (txn != null) {
 				txn.rollback();
 			}
 			e.printStackTrace();
+		
+		} finally {
+			if (em != null)
+				em.close();
 		}
-//		} finally {
-//			if (em != null)
-//				em.close();
-//		}
 
 		return false;
 	}
@@ -74,6 +69,9 @@ public class MethodsImpl implements Methods {
 	@Override
 	public boolean updateClient(Customer client) {
 
+		EntityManager em = emf.createEntityManager();
+		EntityTransaction txn = em.getTransaction();
+		
 		try {
 
 			txn.begin();
@@ -106,6 +104,9 @@ public class MethodsImpl implements Methods {
 	@Override
 	public Set<Customer> getMyClients(Integer idConseiller) {
 
+		EntityManager em = emf.createEntityManager();
+		EntityTransaction txn = em.getTransaction();
+		
 		try {
 			txn.begin();
 			Conseiller conseiller = em.find(Conseiller.class, idConseiller);
@@ -138,6 +139,9 @@ public class MethodsImpl implements Methods {
 	@Override
 	public boolean deleteClientById(Integer idClient) {
 
+		EntityManager em = emf.createEntityManager();
+		EntityTransaction txn = em.getTransaction();
+		
 		try {
 
 			txn.begin();
@@ -192,8 +196,12 @@ public class MethodsImpl implements Methods {
 	
 	@Override
 	public Customer getClientById(Integer idClient) {
+		EntityManager em = emf.createEntityManager();
+		EntityTransaction txn = em.getTransaction();
+		
 		try {
 
+			
 			txn.begin();
 			Customer client = em.find(Customer.class, idClient);
 			
@@ -205,11 +213,11 @@ public class MethodsImpl implements Methods {
 			}
 			e.printStackTrace();
 			return null;
+		
+		} finally {
+			if (em != null)
+				em.close();
 		}
-//		} finally {
-//			if (em != null)
-//				em.close();
-//		}
 
 	}
 
