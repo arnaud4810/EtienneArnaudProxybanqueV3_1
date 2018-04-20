@@ -1,21 +1,19 @@
 package model;
 
-import java.util.Set;
 import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
 
 
@@ -45,7 +43,7 @@ public class Customer {
 	@JoinColumn(name = "idConseiller")
 	private Conseiller conseiller;
 	
-	@OneToMany(mappedBy="customer", cascade = { CascadeType.PERSIST, CascadeType.REMOVE})
+	@OneToMany(mappedBy="client", cascade = { CascadeType.PERSIST, CascadeType.REMOVE})
 	private Set<Comptes> customerAssociatedComptes = new HashSet<>();
 	
 	
@@ -128,6 +126,16 @@ public class Customer {
 		this.customerAssociatedComptes = customerAssociatedComptes;
 	}
 	
+	/**
+	 * @param adresse
+	 * @param telephone
+	 */
+	
+	public boolean addCompte(Comptes compteAAjouter) {
+		customerAssociatedComptes.add(compteAAjouter);
+		compteAAjouter.setClient(this);
+		return true;
+	}
 	
 
 }

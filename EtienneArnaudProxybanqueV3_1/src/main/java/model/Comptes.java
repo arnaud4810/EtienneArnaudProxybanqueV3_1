@@ -23,20 +23,20 @@ public abstract class Comptes {
 	private String dateOuverture;
 	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.REMOVE})
 	@JoinColumn(name = "")
-	private Customer customer;
+	private Customer client;
 
 	/**
 	 * @param numero
 	 * @param solde
 	 * @param dateOuverture
-	 * @param customer
+	 * @param client
 	 */
-	public Comptes(int numero, double solde, String dateOuverture, Customer customer) {
+	public Comptes(int numero, double solde, String dateOuverture, Customer client) {
 		super();
 		this.numero = numero;
 		this.solde = solde;
 		this.dateOuverture = dateOuverture;
-		this.customer = customer;
+		this.client = client;
 	}
 
 	public int getNumero() {
@@ -64,11 +64,11 @@ public abstract class Comptes {
 	}
 
 	public Customer getClient() {
-		return customer;
+		return client;
 	}
 
 	public void setClient(Customer client) {
-		this.customer = client;
+		this.client = client;
 	}
 
 	public Comptes() {

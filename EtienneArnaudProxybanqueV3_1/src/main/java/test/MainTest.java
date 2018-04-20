@@ -73,7 +73,7 @@ public class MainTest {
 			CompteEpargne ce3 = new CompteEpargne();
 			CompteEpargne ce4 = new CompteEpargne();
 			CompteEpargne ce5 = new CompteEpargne();
-			CompteEpargne ce6 = new CompteEpargne();
+			CompteEpargne ce7 = new CompteEpargne();
 			
 			
 			cc1.setClient(customer1);
@@ -89,7 +89,7 @@ public class MainTest {
 			ce3.setClient(customer3);
 			ce4.setClient(customer4);
 			ce5.setClient(customer5);
-			ce6.setClient(customer6);
+			ce7.setClient(customer6);
 			
 						
 //			em.persist(conseiller1);
@@ -107,7 +107,7 @@ public class MainTest {
 			em.persist(ce3);
 			em.persist(ce4);
 			em.persist(ce5);
-			em.persist(ce6);
+			em.persist(ce7);
 			
 			txn.commit();
 

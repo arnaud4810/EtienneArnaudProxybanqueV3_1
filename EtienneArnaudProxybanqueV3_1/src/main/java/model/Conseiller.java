@@ -51,6 +51,10 @@ public class Conseiller {
 		this.login = login;
 		this.password = password;
 	}
+	
+	/**
+	 * @param getters and Setters
+	 */
 
 	public int getIdConseiller() {
 		return idConseiller;
@@ -98,6 +102,16 @@ public class Conseiller {
 
 	public void setConseillerAssociatedCustomer(Set<Customer> conseillerAssociatedCustomer) {
 		this.conseillerAssociatedCustomer = conseillerAssociatedCustomer;
+	}
+	
+	
+	/**
+	 * @param method to link a CUSTOMER to a CONSEILLER AND to link this CONSEILLER to THIS CUSTOMER 
+	 */
+	public void addCustomer(Customer client) {
+		this.conseillerAssociatedCustomer.add(client);
+		client.setConseiller(this);
+		
 	}
 
 }
