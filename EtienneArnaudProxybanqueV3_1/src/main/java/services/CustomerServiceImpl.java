@@ -24,8 +24,18 @@ public class CustomerServiceImpl implements CustomerService {
 	
 	final void init() {
 		Adresse adresse = new Adresse();
+		adresse.getNumero();
+		adresse.getTypeVoie();
+		adresse.getNomVoie();
+		adresse.getCodePostal();
+		adresse.getVille();
+		adresse.setNumero(12);
+		adresse.setTypeVoie("rue");
+		adresse.setNomVoie("Léon");
+		adresse.setCodePostal("75005");
+		adresse.setVille("Paris");
 		Customer customer = new Customer();
-		Conseiller conseiller = new Conseiller();
+		Conseiller conseiller = customer.getConseiller();
 		Set<Comptes> customerAssociatedComptes = new HashSet<>();
 		customer.setIdClient(currentId);
 		customer.setNom("Renard");
