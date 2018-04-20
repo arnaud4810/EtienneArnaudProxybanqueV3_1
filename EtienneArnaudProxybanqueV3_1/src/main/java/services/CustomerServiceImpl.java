@@ -13,10 +13,13 @@ import model.Adresse;
 import model.Comptes;
 import model.Conseiller;
 import model.Customer;
+import persistence.Methods;
+import persistence.MethodsImpl;
 
 public class CustomerServiceImpl implements CustomerService {
 	private int currentId = 123;
 	Map<Integer, Customer> customers = new HashMap<Integer, Customer>();
+	Methods dao = new MethodsImpl();
 	
 	public CustomerServiceImpl() {
 		init();
@@ -52,9 +55,9 @@ public class CustomerServiceImpl implements CustomerService {
 		// TODO Auto-generated method stub
 		
 		int id = Integer.parseInt(idClient);
+		Customer client = dao.getClientById(id);
 		System.out.println("get customer " + id);
-		Customer customer = customers.get(id);
-		return customer;
+		return client;
 	}
 
 	@Override
@@ -75,9 +78,12 @@ public class CustomerServiceImpl implements CustomerService {
 	@Override
 	public Response addCustomer(Customer customer) {
 		// TODO Auto-generated method stub
-		customer.setIdClient(++currentId);
-		customers.put(customer.getIdClient(), customer);
-		return Response.ok(customer).build();
+		Response response = null;
+		customer.setNom("titi");
+		dao.createClient(customer);
+		response = Response.ok(customer).build();
+		
+		return response;
 	}
 
 	@Override
