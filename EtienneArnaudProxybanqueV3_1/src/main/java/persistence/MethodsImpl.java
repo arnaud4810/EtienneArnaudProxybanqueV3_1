@@ -86,34 +86,33 @@ public class MethodsImpl implements Methods {
 	@Override
 	public Set<Customer> getMyClients(Integer idConseiller) {
 
-		 try {
-		 txn.begin();
-		 Conseiller conseiller = em.find(Conseiller.class, idConseiller);
-		 conseiller.getConseillerAssociatedCustomer().size(); //pour eviter la lazy Exception.
-		 
-		 return conseiller.getConseillerAssociatedCustomer();
-		 
-				
-		 } catch (Exception e) {
-			 txn.rollback();
-				e.printStackTrace();
-				return null;
-			 
-		 } finally {
-				if (em != null) {
-					em.close();
-				}
+		try {
+			txn.begin();
+			Conseiller conseiller = em.find(Conseiller.class, idConseiller);
+			conseiller.getConseillerAssociatedCustomer().size(); // pour eviter la lazy Exception.
 
+			return conseiller.getConseillerAssociatedCustomer();
+
+		} catch (Exception e) {
+			txn.rollback();
+			e.printStackTrace();
+			return null;
+
+		} finally {
+			if (em != null) {
+				em.close();
 			}
+
+		}
 	}
-	
+
 	@Override
 	public boolean deleteClientById(Integer idClient) {
 
 		try {
 
 			txn.begin();
-			Client client = em.find(Client.class, idClient);
+			Customer client = em.find(Customer.class, idClient);
 			em.remove(client);
 			txn.commit();
 			return true;
@@ -144,8 +143,24 @@ public class MethodsImpl implements Methods {
 
 	@Override
 	public Customer getClientById(Integer idClient) {
-		// TODO Auto-generated method stub
-		return null;
+		try {
+
+			txn.begin();
+			Customer client = em.find(Customer.class, idClient);
+			
+			return client;
+
+		} catch (Exception e) {
+			if (txn != null) {
+				txn.rollback();
+			}
+			e.printStackTrace();
+			return null;
+		} finally {
+			if (em != null)
+				em.close();
+		}
+
 	}
 
 }
