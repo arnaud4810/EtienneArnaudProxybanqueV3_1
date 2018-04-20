@@ -18,7 +18,6 @@ public interface CustomerService {
 
 	@GET
 	@Path("/Customer/{newIdClient}")
-	
 	Customer getCustomer(@PathParam("newIdClient") String idClient);
 
 	@PUT

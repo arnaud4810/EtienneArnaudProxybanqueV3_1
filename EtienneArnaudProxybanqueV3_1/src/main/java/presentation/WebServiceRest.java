@@ -1,4 +1,4 @@
-package services;
+package presentation;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
@@ -12,7 +12,7 @@ import org.slf4j.LoggerFactory;
 
 import model.Customer;
 
-public class SimpleRestClientGet {
+public class WebServiceRest {
 	private static final String ID = "newIdClient";
 	private static final String ID_PLACEHOLDER = "/{newIdClient}";
 	private static final String CUSTOMERS = "/Customer";
@@ -20,7 +20,7 @@ public class SimpleRestClientGet {
 	private static String typeLogger;
 	private static String typeLogger2;
 	private static String typeLogger3;
-	private static Logger LOGGER = LoggerFactory.getLogger(SimpleRestClientGet.class);
+	private static Logger LOGGER = LoggerFactory.getLogger(WebServiceRest.class);
 
 	public static void main(String[] args) {
 

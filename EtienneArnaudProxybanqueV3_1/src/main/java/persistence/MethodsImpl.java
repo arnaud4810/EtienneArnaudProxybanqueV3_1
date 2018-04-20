@@ -54,10 +54,11 @@ public class MethodsImpl implements Methods {
 				txn.rollback();
 			}
 			e.printStackTrace();
-		} finally {
-			if (em != null)
-				em.close();
 		}
+//		} finally {
+//			if (em != null)
+//				em.close();
+//		}
 
 		return false;
 	}
@@ -204,10 +205,11 @@ public class MethodsImpl implements Methods {
 			}
 			e.printStackTrace();
 			return null;
-		} finally {
-			if (em != null)
-				em.close();
 		}
+//		} finally {
+//			if (em != null)
+//				em.close();
+//		}
 
 	}
 
