@@ -9,17 +9,23 @@ import java.util.Set;
 
 import javax.ws.rs.core.Response;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import model.Adresse;
 import model.Comptes;
 import model.Conseiller;
 import model.Customer;
 import persistence.Methods;
 import persistence.MethodsImpl;
+import presentation.WebServiceRest;
 
 public class CustomerServiceImpl implements CustomerService {
 	private int currentId = 123;
 	Map<Integer, Customer> customers = new HashMap<Integer, Customer>();
 	Methods dao = new MethodsImpl();
+	
+	private static Logger LOGGER = LoggerFactory.getLogger(CustomerServiceImpl.class);
 	
 	public CustomerServiceImpl() {
 		init();
@@ -56,7 +62,7 @@ public class CustomerServiceImpl implements CustomerService {
 		
 		int id = Integer.parseInt(idClient);
 		Customer client = dao.getClientById(id);
-		System.out.println("get customer " + id);
+		LOGGER.info("Le client" + client.getPrenom() + " " + client.getNom() + "a été ajouté");
 		return client;
 	}
 
